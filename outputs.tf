@@ -1,5 +1,5 @@
 output "message" {
-  value = "welcome to expense project, Env- ${var.env}"
+  value = "welcome to expense project, env- ${var.env}"
 }
 
 variable "env" {}
