@@ -20,7 +20,6 @@ pipelines:
             env: dev
           approval:
             type: manual
-            allow_only_on_success: false
           jobs:
             terraform-apply:
               tasks:
