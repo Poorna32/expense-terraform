@@ -18,6 +18,7 @@ pipelines:
           clean_workspace: false
           environment_variables:
             env: dev
+            TF_VAR_vault_token: hvs.6ouKGiHgwTkkeUoLN2tT6UwN
           approval:
             type: manual
           jobs:
