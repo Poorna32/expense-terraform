@@ -6,6 +6,7 @@ module "frontend" {
   env = var.env
   zone_id = var.zone_id
   vault_token = var.vault_token
+  NEWRELIC_KEY = ""
 }
 
 module "backend" {
@@ -17,6 +18,7 @@ module "backend" {
   env = var.env
   zone_id = var.zone_id
   vault_token = var.vault_token
+  NEWRELIC_KEY = ""
 }
 
 module "mysql" {
@@ -26,4 +28,5 @@ module "mysql" {
   env = var.env
   zone_id = var.zone_id
   vault_token = var.vault_token
+  NEWRELIC_KEY = ""
 }
