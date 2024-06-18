@@ -133,10 +133,6 @@ resource "aws_route_table" "public" {
   }
 }
 
-resource "aws_route_table" "public" {
-  vpc_id = aws_vpc.main.id
-}
-
 
 resource "aws_route" "default-vpc" {
   route_table_id            = var.default_route_table_id
