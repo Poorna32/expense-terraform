@@ -24,9 +24,6 @@ resource "aws_security_group" "main" {
 }
 
 
-
-
-
 resource "aws_instance" "instance" {
   ami                     = data.aws_ami.ami.image_id
   instance_type           = var.instance_type
@@ -37,32 +34,32 @@ tags = {
   Name    = var.component
   monitor = "yes"
   env     = var.env
-}
+ }
 }
 
-resource "null_resource" "ansible" {
-  connection {
-      type = "ssh"
-      user = jsondecode(data.vault_generic_secret.ssh.data_json).ansible_user
-      password = jsondecode(data.vault_generic_secret.ssh.data_json).ansible_password
-      host     = aws_instance.instance.private_ip
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "rm -f ~/*.json",
-      "sudo pip3.11 install ansible hvac",
-      "ansible-pull -i localhost, -U https://github.com/Poorna32/expense-ansible1 get-secrets.yml -e env=${var.env} -e role_name=${var.component}  -e vault_token=${var.vault_token}",
-      "ansible-pull -i localhost, -U https://github.com/Poorna32/expense-ansible1 expense.yml -e env=${var.env} -e role_name=${var.component} -e @~/secrets.json",
-    ]
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "rm -f ~/secrets.json ~/app.json"
-    ]
-  }
-}
+#resource "null_resource" "ansible" {
+#  connection {
+#      type = "ssh"
+#      user = jsondecode(data.vault_generic_secret.ssh.data_json).ansible_user
+#      password = jsondecode(data.vault_generic_secret.ssh.data_json).ansible_password
+#      host     = aws_instance.instance.private_ip
+#  }
+#
+#  provisioner "remote-exec" {
+#    inline = [
+#      "rm -f ~/*.json",
+#      "sudo pip3.11 install ansible hvac",
+#      "ansible-pull -i localhost, -U https://github.com/Poorna32/expense-ansible1 get-secrets.yml -e env=${var.env} -e role_name=${var.component}  -e vault_token=${var.vault_token}",
+#      "ansible-pull -i localhost, -U https://github.com/Poorna32/expense-ansible1 expense.yml -e env=${var.env} -e role_name=${var.component} -e @~/secrets.json",
+#    ]
+#  }
+#
+#  provisioner "remote-exec" {
+#    inline = [
+#      "rm -f ~/secrets.json ~/app.json"
+#    ]
+#  }
+#}
 
 resource "aws_route53_record" "record" {
   name    = "${var.component}-${var.env}"
