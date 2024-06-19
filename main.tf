@@ -24,7 +24,7 @@ module "backend" {
   vault_token = var.vault_token
   subnets     = module.vpc.backend_subnets
   vpc_id      = module.vpc.vpc_id
-  ib_type     = "private"
+  lb_type     = "private"
   lb_needed   = "true"
   lb_subnets  = module.vpc.backend_subnets
 }
