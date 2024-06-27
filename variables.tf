@@ -11,3 +11,6 @@ variable "backend_subnets" {}
 variable "db_subnets" {}
 variable "availability_zones" {}
 variable "public_subnets" {}
+variable "bastion_nodes" {}
+variable "prometheus_nodes" {}
+variable "server_app_port_sg_cidr" {}
