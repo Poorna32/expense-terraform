@@ -12,7 +12,7 @@ module "frontend" {
   lb_type     = "public"
   lb_needed   = "true"
   lb_subnets  = module.vpc.public_subnets
-  app_port    = 8080
+  app_port    = 80
   bastion_nodes = var.bastion_nodes
   prometheus_nodes = var.prometheus_nodes
   server_app_port_sg_cidr = var.public_subnets
