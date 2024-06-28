@@ -28,3 +28,5 @@ variable "lb_app_port_sg_cidr" {
 variable "certificate_arn" {
   default = null
 }
+
+variable "lb_ports" {}
