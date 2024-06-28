@@ -36,25 +36,12 @@ resource "aws_security_group" "main" {
 
 
   ingress {
-    from_port        = var.app_port
-    to_port          = var.app_port
+    from_port        = 3306
+    to_port          = 3306
     protocol         = "TCP"
     cidr_blocks      = var.server_app_port_sg_cidr
   }
 
-  ingress {
-    from_port        = 22
-    to_port          = 22
-    protocol         = "TCP"
-    cidr_blocks      = var.bastion_nodes
-  }
-
-  ingress {
-    from_port        = 9100
-    to_port          = 9100
-    protocol         = "TCP"
-    cidr_blocks      = var.prometheus_nodes
-  }
 
   egress {
     from_port        = 0
