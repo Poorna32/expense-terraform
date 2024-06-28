@@ -180,6 +180,7 @@ resource "aws_lb_listener" "frontend-http" {
       status_code = "HTTP_301"
     }
   }
+
 }
 
 
@@ -193,13 +194,14 @@ resource "aws_lb_listener" "frontend-https" {
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group[0].main.arn
+    target_group_arn = aws_lb_target_group.main[0].arn
   }
+
 }
 
 
 resource "aws_lb_listener" "backend" {
-  count             = var.lb_needed && var.component != "public" ? 1 : 0
+  count             = var.lb_needed && var.lb_type != "public" ? 1 : 0
   load_balancer_arn = aws_lb.main[0].arn
   port              = var.app_port
   protocol          = "HTTP"
@@ -208,6 +210,7 @@ resource "aws_lb_listener" "backend" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.main[0].arn
   }
+
 }
 
 
