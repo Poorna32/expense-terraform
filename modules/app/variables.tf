@@ -29,4 +29,6 @@ variable "certificate_arn" {
   default = null
 }
 
-variable "lb_ports" {}
+variable "lb_ports" {
+  default = {}
+}
