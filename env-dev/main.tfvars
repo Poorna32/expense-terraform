@@ -16,3 +16,4 @@ public_subnets       = ["10.10.0.192/27", "10.10.0.224/27"]
 availability_zones   = [ "us-east-1a", "us-east-1b" ]
 bastion_nodes        = ["172.31.23.78/32"]
 prometheus_nodes     = ["172.31.84.218/32"]
+certificate_arn      = "arn:aws:acm:us-east-1:976739212096:certificate/0f070d73-b96e-4f73-9454-32272e3c986e"
