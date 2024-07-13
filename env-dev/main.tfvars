@@ -18,3 +18,8 @@ bastion_nodes        = ["172.31.23.78/32"]
 prometheus_nodes     = ["172.31.84.218/32"]
 certificate_arn      = "arn:aws:acm:us-east-1:976739212096:certificate/0f070d73-b96e-4f73-9454-32272e3c986e"
 kms_key_id           = "arn:aws:kms:us-east-1:976739212096:key/3f9273f6-8de5-45d1-80f4-eb3f43127813"
+
+
+#ASG
+max_capacity = 5
+min_capacity = 1
