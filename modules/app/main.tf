@@ -45,15 +45,15 @@ resource "aws_instance" "instance" {
   subnet_id               = var.subnets[0]
 
   root_block_device {
-    encrypted = true
+    encrypted  = true
     kms_key_id = var.kms_key_id
   }
 
-tags = {
-  Name    = var.component
-  monitor = "yes"
-  env     = var.env
- }
+  tags = {
+    Name    = var.component
+    monitor = "yes"
+    env     = var.env
+  }
 
   lifecycle {
     ignore_changes = [
