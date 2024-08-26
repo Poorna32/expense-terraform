@@ -49,11 +49,11 @@ resource "aws_instance" "instance" {
     kms_key_id = var.kms_key_id
   }
 
-  tags = {
-    Name    = var.component
-    monitor = "yes"
-    env     = var.env
-  }
+tags = {
+  Name    = var.component
+  monitor = "yes"
+  env     = var.env
+ }
 
   lifecycle {
     ignore_changes = [
