@@ -70,6 +70,7 @@ resource "aws_autoscaling_group" "main" {
     propagate_at_launch = true
     value               = "${var.component}-${var.env}"
   }
+
   tag {
     key                 = "monitor"
     propagate_at_launch = true
