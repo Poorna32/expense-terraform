@@ -109,7 +109,7 @@ resource "aws_route53_record" "load-balancer" {
 }
 
 resource "aws_security_group" "load-balancer" {
-  count              = var.lb_needed ? 1 : 0
+  count       = var.lb_needed ? 1 : 0
   name        = "${var.component}-${var.env}-lb-sg"
   description = "${var.component}-${var.env}-lb-sg"
   vpc_id      = var.vpc_id
